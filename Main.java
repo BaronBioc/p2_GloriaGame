@@ -180,12 +180,12 @@ public class Main {
     public static void runRanking(GameSystem central) {
         for (int i = 0; i < central.numPlayers(); i ++) {
             Player player = central.getPlayer(i);
-            System.out.print(player.getName() + ": " + player.getWins() + " games won; ");
+            System.out.println(player.getName() + ": " + player.getWins() + " games won; on square" + player.getPosition() +".");
         }
 
-        for (int i = central.numEliminated(); i >= 0; i --) {
+        for (int i = central.numEliminated() - 1; i >= 0; i --) {
             Player player = central.getEliminated(i);
-            System.out.print(player.getName() + ": " + player.getWins() + " games won; eliminated.");
+            System.out.println(player.getName() + ": " + player.getWins() + " games won; eliminated.");
         }
 
 
