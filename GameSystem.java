@@ -54,7 +54,7 @@ public class GameSystem {
 
     /** check if any player has reached the last tile / if any player has won; */
     public boolean isCupOn() {
-        return (players.length == 1);
+        return (players.length != 1);
     }
 
     /** @param target letter of the player requested;
