@@ -42,7 +42,7 @@ public class Main {
             central.addFine(reader.nextInt(), reader.nextInt());
         }
 
-        int numFalls = input.nextInt();
+        int numFalls = reader.nextInt();
         for (int x = 0; x < numFalls; x ++) {
             central.addFall(reader.nextInt(), reader.nextLine().trim());
         }
