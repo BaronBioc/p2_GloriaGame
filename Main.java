@@ -51,7 +51,7 @@ public class Main {
         do {
             prompt = input.next();
             runCommand(prompt, central, input);
-        } while (prompt.equals(EXIT));
+        } while (!prompt.equals(EXIT));
 
 
         input.close();
