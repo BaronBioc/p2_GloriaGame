@@ -1,4 +1,4 @@
-/** @author Afonso deSousa */
+/** @author Afonso deSousa && Miguel Victorino */
 
 /** class to operate the players according to the Main.java inputs through Player.java and Board.java methods; */
 public class GameSystem {
@@ -22,7 +22,9 @@ public class GameSystem {
 
     private int next = 0;
 
-
+    /** @param String corresponding to the player name sequence
+     * @param int number of the total quantity of squares in the game board
+    */
     public GameSystem(String entry, int squares) {
         this.squares = squares;
         this.size = entry.length();
@@ -37,7 +39,7 @@ public class GameSystem {
 
         startPoint = true;
     }
-
+    // makes a reset of the non eliminated players and
     public void startNewGame() {
 
         if (!hasEliminated) {
@@ -55,7 +57,7 @@ public class GameSystem {
         }
 
     }
-
+    /** eliminates the player that is not eliminated and is behind the other on squares. */
     private void eliminateLast() {
         int last = 0;
         for (int i = 0; i < active; i ++) {
@@ -70,35 +72,43 @@ public class GameSystem {
         active --;
         moveToBottom(ranking[last]);
     }
-
+    /** @return total number of players. */
     public int numPlayers() {
         return size;
     }
-
+    /** @param receives a position.
+     * @return the player ranked at a certain position; */
     public Player getRank(int index) {
         return ranking[index];
     }
-
+    /** @param receives the square of the fine house
+     * @param receives the fine number of the fine house 
+     * adds an fine house to the object board;
+     * */
     public void addFine(int square, int fines) {
         board.addFine(square, fines);
     }
-
+    /** @param receives the square of the cliff house
+     * @param receives the cliff name of the cliff house 
+     * adds an cliff house to the object board;
+     * */
     public void addFall(int square, String type) {
         board.addFall(square, type);
 
     }
-
+    /** @return the game winner. */
     public Player getWinner() {
         return ranking[0];
     }
 
-    /** check if the number of active players is bigger than 1; */
+    /** @return if the number of active players is bigger than 1 returns true; */
     public boolean isCupOn() {
         return (active > 1);
     }
 
     /** @param target letter of the player requested;
-     * pick the corresponding Player from the letter input; */
+     * pick the corresponding Player from the letter input; 
+     */
     public Player selectPlayer(String target) {
         Player selected = null;
 
@@ -111,7 +121,7 @@ public class GameSystem {
         return selected;
     }
 
-    /** return the next Player to play keeping the order and fines; */
+    /** @return the next Player to play keeping the order and fines; */
     public Player getRunnerUp() {
         Player runnerUp = null;
         int idx = next;
@@ -157,7 +167,9 @@ public class GameSystem {
     }
 
     /** @param player selected player from selectPLayer();
-     * check if Player has fines, returns true to 0 fines; */
+     * check if Player has fines
+     * @return true if the player has fines
+     */
     public boolean getStatus(Player player) {
         return !player.hasFines();
     }
@@ -197,7 +209,7 @@ public class GameSystem {
         }
 
     }
-
+    /** executes the dice and check in which square the player is and what the square does */
     public void runSquare(Player player, int sum) {
         String action = board.getTile(player.getPosition());
         switch (action) {
@@ -212,7 +224,7 @@ public class GameSystem {
         }
 
     }
-
+    /** kills the player that lands on a death house */
     private void killPlayer(Player eli) {
         if (!hasEliminated) {
             eli.eliminate();
@@ -224,7 +236,7 @@ public class GameSystem {
         }
 
     }
-
+    /** changes the selected player rank to the end of the non eliminated players*/
     private void moveToBottom(Player eli) {
         int idx = 0;
         for (int i = 0; i < size; i ++) {
@@ -239,7 +251,7 @@ public class GameSystem {
 
         ranking[active] = eli;
     }
-
+    /** sorts players when a certain condition is met */
     private void sortRank() {
         for (int i = 0; i < active - 1; i ++) {
             for (int j = i + 1; j < active; j ++) {

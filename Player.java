@@ -1,4 +1,4 @@
-/** @author Afonso deSousa */
+/** @author Afonso deSousa && Miguel Victorino */
 
 /** class to store each Player's information (name, fines, position) and change them according to the game progress;
  all players start on square 1 and with 0 fines; */
@@ -20,20 +20,15 @@ public class Player {
         this.turn = turn;
         eliminated = false;
     }
-
+    // resets the player position and fines
     public void setNewGame() {
         position = 1;
         fines = 0;
     }
-
+    /** @return player name */
     public String getName() {
         return name;
     }
-
-    /** @return the Player's designated name/letter; */
-
-
-
 
     /** @return the Player's current position; */
     public int getPosition() {
@@ -105,15 +100,15 @@ public class Player {
         }
 
     }
-
+    // executes an hell cliff
     public void applyHell() {
         position = 1;
     }
-
+    // executes an death cliff
     public void eliminate() {
         eliminated = true;
     }
-
+    /**@return player wins */
     public int getWins() {
         return wins;
     }
@@ -125,19 +120,31 @@ public class Player {
     public boolean isEliminated() {
         return eliminated;
     }
-
+    /**
+     * @param other
+     * @return
+     */
     public int rank(Player other) {
         int comp = wins - other.wins;
         if (comp == 0) {
             comp = position - other.position;
             if (comp == 0) {
-               comp = other.turn - turn;
+                if (fines + other.fines == 0) {
+                    comp = other.turn - turn;
+                }
+                else {
+                    comp = fines - other.fines;
+                }
             }
         }
 
         return comp;
     }
-
+    /**
+     * @param other player
+     * compares each players wins and positions
+     * @return the value of comparation
+     */
     public int compare(Player other) {
         int comp = position - other.position;
         if (comp == 0) {

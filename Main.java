@@ -1,4 +1,4 @@
-/** @author Afonso deSousa */
+/** @author Afonso deSousa && Miguel Victorino */
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ public class Main {
     private static final String EXIT = "exit";
     private static final String CAN_DICE = " can roll the dice";
     private static final String CANNOT_DICE = " cannot roll the dice";
-    private static final String INVALID_COMMAND = "Invalid Command";
+    private static final String INVALID_COMMAND = "Invalid command";
     private static final String INVALID_DICE = "Invalid dice";
     private static final String NOT_OVER = "The cup was not over yet...";
     private static final String CUP_OVER = "The cup is over";
@@ -25,7 +25,7 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
-        FileReader fileReader = new FileReader("D:\\Programming\\IntelliJ IDEA Community Edition 2022.2.3\\Projects\\GloryGame_v2\\src\\board");
+        FileReader fileReader = new FileReader("C:\\Users\\party\\eclipse-workspace\\GloryGame_Afonso\\src\\boards.txt");
         Scanner reader = new Scanner(fileReader);
 
         String entry = input.nextLine();
@@ -187,7 +187,10 @@ public class Main {
         }
 
     }
-
+    /**
+     * @param central game system
+     * executes an ranking check commands that outputs the current ranking.
+     */
     public static void runRanking(GameSystem central) {
         for (int i = 0; i < central.numPlayers(); i ++) {
             Player player = central.getRank(i);

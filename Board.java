@@ -1,4 +1,4 @@
-/** @author Afonso deSousa */
+/** @author Afonso deSousa && Miguel Victorino */
 
 /** class to store the game configuration (number of tiles, and tiles with actions); */
 public class Board {
@@ -25,15 +25,26 @@ public class Board {
 
         deaths = new int[squares];
     }
-
+    /**
+     * @param index of a certain square
+     * @return the function of the designated square;
+     */
     public String getTile(int index) {
         return tiles[index];
     }
-
+    /**
+     * @param square of the fine house
+     * @param fine value of the designated fine house
+     * adds to the tile at the square position the value of the fine.
+     */
     public void addFine(int square, int fine) {
         tiles[square] = String.valueOf(fine);
     }
-
+    /**
+     * @param square of the cliff house
+     * @param type of cliff being added
+     * adds to the tile at the square position a certain cliff house.
+     */
     public void addFall(int square, String type) {
         tiles[square] = type.toUpperCase();
 
