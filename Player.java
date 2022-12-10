@@ -131,12 +131,7 @@ public class Player {
         if (comp == 0) {
             comp = position - other.position;
             if (comp == 0) {
-                if (fines + other.fines == 0) {
-                    comp = other.turn - turn;
-                }
-                else {
-                    comp = fines - other.fines;
-                }
+               comp = other.turn - turn;
             }
         }
 
